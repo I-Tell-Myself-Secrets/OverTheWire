@@ -10,7 +10,9 @@ spawn ssh $user@$server -p 2220
 
 expect "$user@$server's password: "
 send -- "$pass\r"
-interact
 
-exit 0
+expect "$ "
+send -- "find -name \"*read*\" -exec cat {} +\r"
 
+expect "$ "
+send -- "exit\r"
